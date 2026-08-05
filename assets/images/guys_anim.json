@@ -1,0 +1,148 @@
+{
+    "anims": [
+        {
+            "key": "walk_back",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "guys",
+                    "frame": "guys020"
+                },
+                {
+                    "key": "guys",
+                    "frame": "guys021"
+                },
+                {
+                    "key": "guys",
+                    "frame": "guys022"
+                },
+                {
+                    "key": "guys",
+                    "frame": "guys023"
+                }
+            ]
+        },
+        {
+            "key": "idle_back",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "guys",
+                    "frame": "guys016"
+                },
+                {
+                    "key": "guys",
+                    "frame": "guys017"
+                },
+                {
+                    "key": "guys",
+                    "frame": "guys018"
+                },
+                {
+                    "key": "guys",
+                    "frame": "guys019"
+                }
+            ]
+        },
+        {
+            "key": "walk_front",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "guys",
+                    "frame": "guys012"
+                },
+                {
+                    "key": "guys",
+                    "frame": "guys013"
+                },
+                {
+                    "key": "guys",
+                    "frame": "guys014"
+                },
+                {
+                    "key": "guys",
+                    "frame": "guys015"
+                }
+            ]
+        },
+        {
+            "key": "idle_front",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "guys",
+                    "frame": "guys008"
+                },
+                {
+                    "key": "guys",
+                    "frame": "guys009"
+                },
+                {
+                    "key": "guys",
+                    "frame": "guys010"
+                },
+                {
+                    "key": "guys",
+                    "frame": "guys011"
+                }
+            ]
+        },
+        {
+            "key": "walk_side",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "guys",
+                    "frame": "guys004"
+                },
+                {
+                    "key": "guys",
+                    "frame": "guys005"
+                },
+                {
+                    "key": "guys",
+                    "frame": "guys006"
+                },
+                {
+                    "key": "guys",
+                    "frame": "guys007"
+                }
+            ]
+        },
+        {
+            "key": "idle_side",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "guys",
+                    "frame": "guys000"
+                },
+                {
+                    "key": "guys",
+                    "frame": "guys001"
+                },
+                {
+                    "key": "guys",
+                    "frame": "guys002"
+                },
+                {
+                    "key": "guys",
+                    "frame": "guys003"
+                }
+            ]
+        }
+    ]
+}
