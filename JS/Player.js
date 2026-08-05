@@ -3,6 +3,21 @@ export default class Player extends Phaser.Physics.Matter.Sprite {
     let { scene, x, y, texture, frame } = data;
     super(scene.matter.world, x, y, texture, frame);
     this.scene.add.existing(this);
+    const { Body, Bodies } = Phaser.Physics.Matter.Matter;
+    //////////////////////////////////////Character hitbox
+    var playerCollider = Bodies.circle(this.x, this.y, 12, {
+      isSensor: false,
+      label: "playerCollider",
+    });
+    var playerSensor = Bodies.circle(this.x, this.y, 24, {
+      isSensor: true,
+      label: "playerSensor",
+    });
+    const compoundBody = Body.create({
+      parts: [playerCollider, playerSensor],
+      frictionAir: 0.35,
+    });
+    this.setExistingBody(compoundBody);
   }
   //////////////////////////////////////
   static preload(scene) {
@@ -17,14 +32,13 @@ export default class Player extends Phaser.Physics.Matter.Sprite {
   get velocity() {
     return this.body.velocity;
   }
-
   //////////////////////////////////////
   update() {
     this.setVelocity(0);
+    const speed = 1.5;
     let playerVelocity = new Phaser.Math.Vector2();
-    let direction = "down";
 
-    const speed = 2.5;
+    let direction = "down";
 
     if (this.inputKeys.left.isDown) {
       playerVelocity.x = -1;
@@ -46,6 +60,7 @@ export default class Player extends Phaser.Physics.Matter.Sprite {
       direction = "down";
       console.log(direction);
     }
+
     playerVelocity.normalize();
     playerVelocity.scale(speed);
 
