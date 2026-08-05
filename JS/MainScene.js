@@ -9,7 +9,6 @@ export default class MainScene extends Phaser.Scene {
   }
   //Game objects
   create() {
-    //This function sets the first keyframe of character movement.
     this.player = new Player({
       scene: this,
       x: 0,
@@ -17,6 +16,17 @@ export default class MainScene extends Phaser.Scene {
       texture: "guys",
       frame: "guys000",
     });
+
+    //Test Player
+    let testPlayer = new Player({
+      scene: this,
+      x: 100,
+      y: 100,
+      texture: "guys",
+      frame: "guys000",
+    });
+    //Test Player
+
     this.player.inputKeys = this.input.keyboard.addKeys({
       up: Phaser.Input.Keyboard.KeyCodes.W,
       down: Phaser.Input.Keyboard.KeyCodes.S,
