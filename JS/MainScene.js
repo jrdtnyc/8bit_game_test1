@@ -1,3 +1,4 @@
+//import Phaser from "phaser";
 import Player from "./Player.js";
 export default class MainScene extends Phaser.Scene {
   constructor() {
@@ -19,17 +20,33 @@ export default class MainScene extends Phaser.Scene {
     const map = this.make.tilemap({ key: "map" });
     const tileset = map.addTilesetImage("RPG Nature Tileset", "tiles");
     //////////////////////////////////////Draw Map - Tile Layer 1 - From tiled app!
-    const layer1 = map.createLayer("Tile Layer 1", tileset, 0, 0); //<---Correct method is createLayer
+    const layer1 = map.createLayer("Tile Layer 1", tileset, 0, 0); //<---Correct method is createLayer - This adds map layers
     layer1.setDepth(1); //<---This is the ground layer.
+    const layer2 = map.createLayer("Tile Layer 2", tileset, 0, 0);
+    layer2.setDepth(1);
+    //https://phaser.io/news/2021/05/matter-js-collision-tutorial
+    layer1.setCollisionByProperty({ collides: true }); //<--collides was set in map.json in Tiled for boundary tiles
+    this.matter.world.convertTilemapLayer(layer1);
     //////////////////////////////////////Player
     this.player = new Player({
       scene: this,
-      x: 0,
-      y: 0,
+      x: 300,
+      y: 300,
       texture: "guys",
       frame: "guys000",
     });
     this.player.setDepth(3);
+
+    /*
+    this.player2 = new Player({
+      scene: this,
+      x: 300,
+      y: 300,
+      texture: "guys",
+      frame: "guys000",
+    });
+    this.player2.setDepth(3);
+    */
     //////////////////////////////////////Player Character Key mapping
     this.player.inputKeys = this.input.keyboard.addKeys({
       up: Phaser.Input.Keyboard.KeyCodes.W,

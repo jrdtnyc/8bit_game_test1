@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "phaser": "^4.2.1",
+    "phaser-matter-collision-plugin": "^1.0.0"
+  }
+}
