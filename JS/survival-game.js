@@ -5,7 +5,7 @@ import MainScene from "./MainScene.js";
 //Create the play surface in index.html survival-game div
 const config = {
   width: 512,
-  height: 512,
+  height: 480,
   backgroundColor: "#333333",
   parent: "survival-game", //<---Play surface will be generated here!
   scene: [MainScene],
