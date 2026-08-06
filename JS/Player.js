@@ -18,7 +18,7 @@ export default class Player extends Phaser.Physics.Matter.Sprite {
       frictionAir: 0.35,
     });
     this.setExistingBody(compoundBody);
-    this.setFixedRotation();
+    this.setFixedRotation(); //<---Keep player character from rotating during collisions.
   }
   //////////////////////////////////////
   static preload(scene) {
@@ -44,33 +44,33 @@ export default class Player extends Phaser.Physics.Matter.Sprite {
     if (this.inputKeys.left.isDown) {
       playerVelocity.x = -1;
       direction = "left";
-      console.log(direction);
-      console.log(playerVelocity.x);
+      //console.log(direction);
+      //console.log(playerVelocity.x);
     }
     if (this.inputKeys.right.isDown) {
       playerVelocity.x = 1;
       direction = "right";
-      console.log(direction);
-      console.log(playerVelocity.x);
+      //console.log(direction);
+      //console.log(playerVelocity.x);
     }
     if (this.inputKeys.up.isDown) {
       playerVelocity.y = -1;
       direction = "up";
-      console.log(direction);
-      console.log(playerVelocity.y);
+      //console.log(direction);
+      //console.log(playerVelocity.y);
     }
     if (this.inputKeys.down.isDown) {
       playerVelocity.y = 1;
       direction = "down";
-      console.log(direction);
-      console.log(playerVelocity.y);
+      //console.log(direction);
+      //console.log(playerVelocity.y);
     }
 
     playerVelocity.normalize();
     playerVelocity.scale(speed);
 
     this.setVelocity(playerVelocity.x, playerVelocity.y);
-    console.log(this.velocity.x, this.velocity.y);
+    //console.log(this.velocity.x, this.velocity.y);
     if (this.velocity.x > 0.1) {
       const flipAnimsRight = this.anims.play("walk_side", true);
       flipAnimsRight.setFlipX(true);
