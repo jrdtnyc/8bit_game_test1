@@ -3,6 +3,18 @@ export default class Player extends Phaser.Physics.Matter.Sprite {
     let { scene, x, y, texture, frame } = data;
     super(scene.matter.world, x, y, texture, frame);
     this.scene.add.existing(this);
+    //////////////////////////////////////Weapon
+    //Grab Weapon from spritesheet to attach to the player!
+    this.spriteWeapon = new Phaser.GameObjects.Sprite(
+      this.scene,
+      0,
+      0,
+      "items",
+      85,
+    );
+    //this.spriteWeapon.setOrigin(0.25,0.75) //<---For weapon rotation!!!
+    this.scene.add.existing(this.spriteWeapon);
+
     const { Body, Bodies } = Phaser.Physics.Matter.Matter;
     //////////////////////////////////////Character hitbox
     var playerCollider = Bodies.circle(this.x, this.y, 12, {
@@ -28,6 +40,10 @@ export default class Player extends Phaser.Physics.Matter.Sprite {
       "assets/images/guys_atlas.json",
     );
     scene.load.animation("guys_anim", "assets/images/guys_anim.json");
+    scene.load.spritesheet("items", "assets/images/items.png", {
+      frameWidth: 32,
+      frameHeight: 32,
+    });
   }
 
   get velocity() {
@@ -74,21 +90,33 @@ export default class Player extends Phaser.Physics.Matter.Sprite {
     if (this.velocity.x > 0.1) {
       const flipAnimsRight = this.anims.play("walk_side", true);
       flipAnimsRight.setFlipX(true);
+      const weaponAngle = this.spriteWeapon;
+      weaponAngle.setFlipX(false);
+      weaponAngle.setDepth(4);
     }
-
     if (this.velocity.x < -0.1) {
       this.anims.play("walk_side", true);
       const flipAnimsRight = this.anims.play("walk_side", true);
       flipAnimsRight.setFlipX(false);
+      const weaponAngle = this.spriteWeapon;
+      weaponAngle.setFlipX(true);
+      weaponAngle.setDepth(1);
     }
 
     if (this.velocity.y > 0.1) {
       this.anims.play("walk_front", true);
+      const weaponAngle = this.spriteWeapon;
+      weaponAngle.setFlipX(false);
+      weaponAngle.setDepth(4);
     }
 
     if (this.velocity.y < -0.1) {
       this.anims.play("walk_back", true);
+      const weaponAngle = this.spriteWeapon;
+      weaponAngle.setDepth(1);
+      weaponAngle.setFlipX(true);
     }
+    this.spriteWeapon.setPosition(this.x, this.y); //<--Stick weapon to the player. Update frame by frame with the player
     //////////////////////////////////////
   }
 }

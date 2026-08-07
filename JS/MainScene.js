@@ -21,9 +21,9 @@ export default class MainScene extends Phaser.Scene {
     const tileset = map.addTilesetImage("RPG Nature Tileset", "tiles");
     //////////////////////////////////////Draw Map - Tile Layer 1 - From tiled app!
     const layer1 = map.createLayer("Tile Layer 1", tileset, 0, 0); //<---Correct method is createLayer - This adds map layers
-    layer1.setDepth(1); //<---This is the ground layer.
+    //layer1.setDepth(1); //<---This is the ground layer.
     const layer2 = map.createLayer("Tile Layer 2", tileset, 0, 0);
-    layer2.setDepth(1);
+    //layer2.setDepth(1);
     //https://phaser.io/news/2021/05/matter-js-collision-tutorial
     layer1.setCollisionByProperty({ collides: true }); //<--collides was set in map.json in Tiled for boundary tiles
     this.matter.world.convertTilemapLayer(layer1);
