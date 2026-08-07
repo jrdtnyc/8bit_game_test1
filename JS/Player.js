@@ -123,7 +123,7 @@ export default class Player extends Phaser.Physics.Matter.Sprite {
       this.anims.play("walk_front", true);
       const weaponAngle = this.spriteWeapon;
       this.spriteWeapon.visible = true;
-      weaponAngle.setOrigin(0.25, 0.6);
+      weaponAngle.setOrigin(0.35, 0.6);
       weaponAngle.setFlipX(false);
       weaponAngle.setDepth(4);
       if (this.inputKeys.mele.isDown) {
@@ -137,11 +137,11 @@ export default class Player extends Phaser.Physics.Matter.Sprite {
       this.anims.play("walk_back", true);
       const weaponAngle = this.spriteWeapon;
       this.spriteWeapon.visible = true;
-      weaponAngle.setOrigin(0.75, 0.6);
+      weaponAngle.setOrigin(0.1, 0.6);
       weaponAngle.setDepth(1);
-      weaponAngle.setFlipX(true);
+      weaponAngle.setFlipX(false);
       if (this.inputKeys.mele.isDown) {
-        this.spriteWeapon.rotation = 2;
+        this.spriteWeapon.rotation = -2;
       } else {
         this.spriteWeapon.rotation = 0;
       }
