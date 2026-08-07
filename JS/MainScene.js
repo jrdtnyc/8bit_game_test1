@@ -53,6 +53,7 @@ export default class MainScene extends Phaser.Scene {
       down: Phaser.Input.Keyboard.KeyCodes.S,
       left: Phaser.Input.Keyboard.KeyCodes.A,
       right: Phaser.Input.Keyboard.KeyCodes.D,
+      mele: Phaser.Input.Keyboard.KeyCodes.SPACE,
     });
   }
   //Call 60 fps update on characters, animated objects!

@@ -12,7 +12,8 @@ export default class Player extends Phaser.Physics.Matter.Sprite {
       "items",
       85,
     );
-    //this.spriteWeapon.setOrigin(0.25,0.75) //<---For weapon rotation!!!
+    this.spriteWeapon.visible = false; //<---Sword invisible when game starts
+    ////this.spriteWeapon.setOrigin(0.1, 0.75); <---For weapon rotation!!!
     this.scene.add.existing(this.spriteWeapon);
 
     const { Body, Bodies } = Phaser.Physics.Matter.Matter;
@@ -51,6 +52,7 @@ export default class Player extends Phaser.Physics.Matter.Sprite {
   }
   //////////////////////////////////////
   update() {
+    //////////////////////////////////////Player movement
     this.setVelocity(0);
     const speed = 1.5;
     let playerVelocity = new Phaser.Math.Vector2();
@@ -89,34 +91,70 @@ export default class Player extends Phaser.Physics.Matter.Sprite {
     //console.log(this.velocity.x, this.velocity.y);
     if (this.velocity.x > 0.1) {
       const flipAnimsRight = this.anims.play("walk_side", true);
+      this.spriteWeapon.visible = true;
       flipAnimsRight.setFlipX(true);
       const weaponAngle = this.spriteWeapon;
+      weaponAngle.setOrigin(0.25, 0.6);
       weaponAngle.setFlipX(false);
       weaponAngle.setDepth(4);
+      if (this.inputKeys.mele.isDown) {
+        this.spriteWeapon.rotation = 1;
+      } else {
+        this.spriteWeapon.rotation = 0;
+      }
     }
     if (this.velocity.x < -0.1) {
       this.anims.play("walk_side", true);
       const flipAnimsRight = this.anims.play("walk_side", true);
+      this.spriteWeapon.visible = true;
       flipAnimsRight.setFlipX(false);
       const weaponAngle = this.spriteWeapon;
+      weaponAngle.setOrigin(0.75, 0.6);
       weaponAngle.setFlipX(true);
       weaponAngle.setDepth(1);
+      if (this.inputKeys.mele.isDown) {
+        this.spriteWeapon.rotation = -1;
+      } else {
+        this.spriteWeapon.rotation = 0;
+      }
     }
 
     if (this.velocity.y > 0.1) {
       this.anims.play("walk_front", true);
       const weaponAngle = this.spriteWeapon;
+      this.spriteWeapon.visible = true;
+      weaponAngle.setOrigin(0.25, 0.6);
       weaponAngle.setFlipX(false);
       weaponAngle.setDepth(4);
+      if (this.inputKeys.mele.isDown) {
+        this.spriteWeapon.rotation = 2;
+      } else {
+        this.spriteWeapon.rotation = 0;
+      }
     }
 
     if (this.velocity.y < -0.1) {
       this.anims.play("walk_back", true);
       const weaponAngle = this.spriteWeapon;
+      this.spriteWeapon.visible = true;
+      weaponAngle.setOrigin(0.75, 0.6);
       weaponAngle.setDepth(1);
       weaponAngle.setFlipX(true);
+      if (this.inputKeys.mele.isDown) {
+        this.spriteWeapon.rotation = 2;
+      } else {
+        this.spriteWeapon.rotation = 0;
+      }
     }
+    //////////////////////////////////////Mele weapon
     this.spriteWeapon.setPosition(this.x, this.y); //<--Stick weapon to the player. Update frame by frame with the player
+    /*
+    if (this.inputKeys.mele.isDown) {
+      this.spriteWeapon.rotation = -0.5;
+    } else {
+      this.spriteWeapon.rotation = 0;
+    }
+*/
     //////////////////////////////////////
   }
 }
